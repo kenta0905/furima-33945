@@ -35,7 +35,7 @@ Things you may want to cover:
 | first_name          | string   | null: false |
 | last_name_kana      | string   | null: false |
 | first_name_kana     | string   | null: false |
-| birth_date_id       | date     | null: false |
+| birth_date          | date     | null: false |
 ### Association
 has_many :items
 has_many :orders
@@ -53,8 +53,6 @@ has_many :orders
 | prefecture_id   | integer       | null: false |
 | scheduled_id    | integer       | null: false |
 | price           | integer       | null: false |
-| add_tax_price   | integer       | null: false |
-| profit          | integer       | null: false |
 ### Association
 belongs_to :user
 has_one :order
