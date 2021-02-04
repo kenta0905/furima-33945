@@ -41,7 +41,6 @@ has_many :items
 has_many :orders
 
 
-
 ## items テーブル #商品情報
 | Column          | Type          | Options     |
 | --------------- | ------------- | ----------- |
@@ -65,7 +64,6 @@ belongs_to :item_prefecture_id
 belongs_to :item_scheduled_id
 
 
-
 ## orders テーブル #購入記録
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
@@ -75,7 +73,6 @@ belongs_to :item_scheduled_id
 belongs_to :user
 belongs_to :item
 has_one :address
-
 
 
 ## addresses テーブル #住所
@@ -88,6 +85,6 @@ has_one :address
 | building      | string  |             |
 | phone_number  | string  | null: false | 
 ### Association
-belongs_to :order, dependent: :destroy
+belongs_to :order, foreign_key: true
 
 belongs_to :prefecture_id
