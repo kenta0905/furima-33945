@@ -26,16 +26,16 @@ Things you may want to cover:
 
 
  ## users テーブル #ユーザー
-| Column              | Type     | Options     |
-| ------------------- | -------- | ----------- |
-| nickname            | string   | null: false |
-| email               | string   | null: false |
-| encrypted_password  | string   | null: false |
-| last_name           | string   | null: false |
-| first_name          | string   | null: false |
-| last_name_kana      | string   | null: false |
-| first_name_kana     | string   | null: false |
-| birth_date          | date     | null: false |
+| Column              | Type     | Options                   |
+| ------------------- | -------- | ------------------------- |
+| nickname            | string   | null: false               |
+| email               | string   | null: false, unique: true |
+| encrypted_password  | string   | null: false               |
+| last_name           | string   | null: false               |
+| first_name          | string   | null: false               |
+| last_name_kana      | string   | null: false               |
+| first_name_kana     | string   | null: false               |
+| birth_date          | date     | null: false               |
 ### Association
 has_many :items
 has_many :orders
@@ -53,6 +53,7 @@ has_many :orders
 | prefecture_id   | integer       | null: false |
 | scheduled_id    | integer       | null: false |
 | price           | integer       | null: false |
+| user            | string        | null: false |
 ### Association
 belongs_to :user
 has_one :order
@@ -77,16 +78,16 @@ has_one :address
 
 
 
-## address テーブル #住所
-| Column        | Type    | Options                        |
-| ------------- | ------- | ------------------------------ |
-| postal_code   | integer | null: false, foreign_key: true | 
-| prefecture_id | integer | null: false, foreign_key: true | 
-| city          | string  | null: false, foreign_key: true | 
-| address       | string  | null: false, foreign_key: true | 
-| building      | string  |                                |
-| phone_number  | string  | null: false, foreign_key: true | 
+## addresses テーブル #住所
+| Column        | Type    | Options     |
+| ------------- | ------- | ----------- |
+| postal_code   | string  | null: false | 
+| prefecture_id | integer | null: false | 
+| city          | string  | null: false | 
+| address       | string  | null: false | 
+| building      | string  |             |
+| phone_number  | string  | null: false | 
 ### Association
-belongs_to :order
+belongs_to :order, dependent: :destroy
 
 belongs_to :prefecture_id
