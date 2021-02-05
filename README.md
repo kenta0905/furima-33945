@@ -42,17 +42,17 @@ has_many :orders
 
 
 ## items テーブル #商品情報
-| Column          | Type          | Options                        |
-| --------------- | ------------- | ------------------------------ |
-| name            | string        | null: false                    |
-| info            | text          | null: false                    |
-| category_id     | integer       | null: false                    |
-| sales_status_id | integer       | null: false                    |
-| shipping_id     | integer       | null: false                    |
-| prefecture_id   | integer       | null: false                    |
-| scheduled_id    | integer       | null: false                    |
-| price           | integer       | null: false                    |
-| user            | references    | null: false, foreign_key: true |
+| Column          | Type          | Options     |
+| --------------- | ------------- | ----------- |
+| name            | string        | null: false |
+| info            | text          | null: false |
+| category_id     | integer       | null: false |
+| sales_status_id | integer       | null: false |
+| shipping_id     | integer       | null: false |
+| prefecture_id   | integer       | null: false |
+| scheduled_id    | integer       | null: false |
+| price           | integer       | null: false |
+| user            | references    | null: false |
 ### Association
 belongs_to :user
 has_one :order
@@ -76,15 +76,15 @@ has_one :address
 
 
 ## addresses テーブル #住所
-| Column        | Type       | Options                        |
-| ------------- | ---------- | ------------------------------ |
-| postal_code   | string     | null: false                    | 
-| prefecture_id | integer    | null: false                    | 
-| city          | string     | null: false                    | 
-| address       | string     | null: false                    | 
-| building      | string     |                                |
-| phone_number  | string     | null: false                    | 
-| order         | references | null: false, foreign_key: true |
+| Column        | Type       | Options     |
+| ------------- | ---------- | ----------- |
+| postal_code   | string     | null: false | 
+| prefecture_id | integer    | null: false | 
+| city          | string     | null: false | 
+| address       | string     | null: false | 
+| building      | string     |             |
+| phone_number  | string     | null: false | 
+| order         | references | null: false |
 ### Association
 belongs_to :order
 
