@@ -52,16 +52,16 @@ has_many :orders
 | prefecture_id   | integer       | null: false |
 | scheduled_id    | integer       | null: false |
 | price           | integer       | null: false |
-| user            | string        | null: false |
+| user            | references    | null: false |
 ### Association
 belongs_to :user
 has_one :order
 
-belongs_to :item_category_id
-belongs_to :item_sales_status_id
-belongs_to :item_shipping_id
-belongs_to :item_prefecture_id
-belongs_to :item_scheduled_id
+belongs_to :item_category
+belongs_to :item_sales_status
+belongs_to :item_shipping
+belongs_to :item_prefecture
+belongs_to :item_scheduled
 
 
 ## orders テーブル #購入記録
@@ -76,15 +76,16 @@ has_one :address
 
 
 ## addresses テーブル #住所
-| Column        | Type    | Options                        |
-| ------------- | ------- | ------------------------------ |
-| postal_code   | string  | null: false                    | 
-| prefecture_id | integer | null: false                    | 
-| city          | string  | null: false                    | 
-| address       | string  | null: false, foreign_key: true | 
-| building      | string  |                                |
-| phone_number  | string  | null: false                    | 
+| Column        | Type       | Options                        |
+| ------------- | ---------- | ------------------------------ |
+| postal_code   | string     | null: false                    | 
+| prefecture_id | integer    | null: false                    | 
+| city          | string     | null: false                    | 
+| address       | string     | null: false                    | 
+| building      | string     |                                |
+| phone_number  | string     | null: false                    | 
+| order         | references | null: false                    |
 ### Association
 belongs_to :order
 
-belongs_to :prefecture_id
+belongs_to :prefecture
