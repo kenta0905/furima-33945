@@ -29,13 +29,13 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email can't be blank")
     end
 
-    it 'encrypted_passwordが空では登録できない' do
+    it 'passwordが空では登録できない' do
       @user.password = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password can't be blank")
     end
 
-    it 'encrypted_passwordが存在してもpassword_confirmationが空では登録できない' do
+    it 'passwordが存在してもpassword_confirmationが空では登録できない' do
       @user.password_confirmation = ''
       @user.valid?
       expect(@user.errors.full_messages).to include("Password confirmation doesn't match Password")
@@ -55,7 +55,7 @@ RSpec.describe User, type: :model do
       expect(@user.errors.full_messages).to include("Email is invalid")
     end
 
-    it 'encrypted_passwordが5文字以下では登録できない' do
+    it 'passwordが5文字以下では登録できない' do
       @user.password = '00000'
       @user.password_confirmation = '00000'
       @user.valid?
@@ -130,6 +130,13 @@ RSpec.describe User, type: :model do
       @user.valid?
       expect(@user.errors.full_messages).to include("First name kana 全角カタカナのみで入力して下さい")
     end
-   end
+   
+    it '誕生日が空では登録できない' do
+      @user.birth_date = ''
+      @user.valid?
+      expect(@user.errors.full_messages).to include("Birth date can't be blank")
+    end
+  
+  end
   end
 end
