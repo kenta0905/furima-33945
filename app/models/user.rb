@@ -7,8 +7,7 @@ class User < ApplicationRecord
   has_many :items
   has_many :orders
    
-validates :encrypted_password,:password_confirmation,length:{minimum:6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/, message: "半角英数字6文字以上で入力して下さい" }
-
+validates :password,:encrypted_password,:password_confirmation,length:{minimum:6},format:{with: /(?=.*[a-zA-Z])(?=.*\d)[a-zA-Z\d]{7,}/, message: "半角英数字6文字以上で入力して下さい" }
 
 with_options presence: true do
   validates :nickname  
