@@ -25,6 +25,3 @@ with_options presence: true, format: { with: /\A[ァ-ヶー－]+\z/, message: "�
 end 
 
 end 
-
-#/\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i
-#/\A[ぁ-んァ-ヶ一-龥々]+\z/
