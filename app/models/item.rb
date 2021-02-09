@@ -1,14 +1,14 @@
 class Item < ApplicationRecord
 
-  # belongs_to :user
-  # has_one :order
+  belongs_to :user
+  has_one :order
   
-  # has_one_attached :image
+  has_one_attached :image
 
-  # belongs_to :item_category
-  # belongs_to :item_sales_status
-  # belongs_to :item_shipping
-  # belongs_to :item_prefecture
-  # belongs_to :item_scheduled
+  belongs_to :category
+  belongs_to :sales_status
+  belongs_to :shipping
+  belongs_to :prefecture
+  belongs_to :scheduled
 
 end
