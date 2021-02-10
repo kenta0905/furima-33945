@@ -65,6 +65,36 @@ RSpec.describe Item, type: :model do
     expect(@item.errors.full_messages).to include("Scheduled can't be blank")
   end
 
+  it 'category_idが1では保存できない' do
+    @item.category_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include("Category must be other than 1")
+  end
+
+  it 'status_idが1では保存できない' do
+    @item.status_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include("Status must be other than 1")
+  end
+
+  it 'shipping_idが1では保存できない' do
+    @item.shipping_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include("Shipping must be other than 1")
+  end
+
+  it 'prefecture_idが1では保存できない' do
+    @item.prefecture_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include("Prefecture must be other than 1")
+  end
+
+  it 'scheduled_idが1では保存できない' do
+    @item.scheduled_id = 1
+    @item.valid?
+    expect(@item.errors.full_messages).to include("Scheduled must be other than 1")
+  end
+
   it 'priceが空では保存できない' do
     @item.price = ''
     @item.valid?
