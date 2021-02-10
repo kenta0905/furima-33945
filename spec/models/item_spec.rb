@@ -7,26 +7,18 @@ RSpec.describe Item, type: :model do
 
   describe '商品出品機能' do
 
+   context '商品登録できるとき' do
 
-  # context '商品登録できるとき' do
-  #     it 'name,info,category_id,status_id,shipping_id,prefecture_id,scheduled_id,price全ての入力で登録' do
-  #       expect(@item).to be_valid
-  #     end
-  # end
+   it 'name,info,category_id,status_id,shipping_id,prefecture_id,scheduled_id,price全ての入力で登録' do
+         expect(@item).to be_valid
+       end
+   end
  
 
   context '商品出品できないとき' do 
 
-
-  it 'name,info,category_id,status_id,shipping_id,prefecture_id,scheduled_id,price全ての入力で登録' do
-    @item.name = ''
-    @item.valid?
-    expect(@item.errors.full_messages).to include("Image can't be blank")
-  end
-  
-
   it 'imageが空では保存できない' do
-    @item.name = ''
+    @item.image = nil
     @item.valid?
     expect(@item.errors.full_messages).to include("Image can't be blank")
   end
@@ -80,13 +72,19 @@ RSpec.describe Item, type: :model do
   end
  
   it 'priceが¥300~¥9,999,999の間ではないと保存できない' do
-    @item.price = '300 - 9999999'
+    @item.price = '299'
+    @item.valid?
+    expect(@item.errors.full_messages).to include("Price ¥300~¥9,999,999の範囲で入力して下さい")
+  end
+
+  it 'priceが¥300~¥9,999,999の間ではないと保存できない' do
+    @item.price = '10000000'
     @item.valid?
     expect(@item.errors.full_messages).to include("Price ¥300~¥9,999,999の範囲で入力して下さい")
   end
 
   it 'priceが半角数字のみではないと保存できない' do
-    @item.price = ''
+    @item.price = '０００００'
     @item.valid?
     expect(@item.errors.full_messages).to include("Price 半角数字のみで入力して下さい")
   end
