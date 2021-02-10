@@ -24,7 +24,7 @@ class Item < ApplicationRecord
   #inclusion: {in: 300..9999999, message: "¥300~¥9,999,999の範囲で入力して下さい" } 
 
 
-  with_options presence: true,numericality: { other_than: 0 } do
+  with_options presence: true,numericality: { other_than: 1 } do
    validates :category_id
    validates :status_id
    validates :shipping_id
