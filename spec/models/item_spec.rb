@@ -102,13 +102,13 @@ RSpec.describe Item, type: :model do
   end
  
   it 'priceが¥300~¥9,999,999の間ではないと保存できない' do
-    @item.price = '299'
+    @item.price = 299
     @item.valid?
     expect(@item.errors.full_messages).to include("Price ¥300~¥9,999,999の範囲で入力して下さい")
   end
 
   it 'priceが¥300~¥9,999,999の間ではないと保存できない' do
-    @item.price = '10000000'
+    @item.price = 10000000
     @item.valid?
     expect(@item.errors.full_messages).to include("Price ¥300~¥9,999,999の範囲で入力して下さい")
   end
