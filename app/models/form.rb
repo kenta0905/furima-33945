@@ -26,4 +26,5 @@ class Form
     @address = Address.new
     @order = Order.new
   end
+  
 end
