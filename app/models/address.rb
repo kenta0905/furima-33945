@@ -1,14 +1,22 @@
 class Address < ApplicationRecord
-include ActiveModel::Model
-  attr_accessor :hoge,:fuga...
 
   belongs_to :order
 
   belongs_to :prefecture
 
-  # ここにバリデーションの処理を書く
+  extend ActiveHash::Associations::ActiveRecordExtensions
+  belongs_to :prefecture
 
-  def save
-    # 各テーブルにデータを保存する処理を書く
+  with_options presence: true do
+    validates :postal_code 
+    validates :city
+    validates :address 
+    validates :phone_number
+    validates :oorder
   end
+
+  with_options presence: true,numericality: { other_than: 1 } do
+    validates :prefecture_id
+   end
+
 end
