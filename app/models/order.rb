@@ -5,7 +5,7 @@ class Order < ApplicationRecord
   has_one :address
 
   with_options presence: true do
-    #validates :item
+    validates :item
     validates :user
   end
 
