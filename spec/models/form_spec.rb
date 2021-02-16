@@ -11,7 +11,7 @@ RSpec.describe Form, type: :model do
 
 describe '商品購入機能' do
   context '商品購入できるとき' do
-   it 'postal_code、prefecture_id、city、address、phone_number、item、user入力で登録' do
+   it 'postal_code、prefecture_id、city、address、phone_number、item、user、token入力で登録' do
      expect(@form).to be_valid
    end
   end
@@ -61,8 +61,6 @@ it 'phone_numberの保存は11桁以内の数値でないと登録できない' 
     @form.valid?
     expect(@form.errors.full_messages).to include("Phone number Input only number")
   end
-
-
 
 end
 end

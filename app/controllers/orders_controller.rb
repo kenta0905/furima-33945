@@ -5,6 +5,11 @@ class OrdersController < ApplicationController
   def index
     @form = Form.new
     @item = Item.find(params[:item_id])
+    if current_user.id == @item.user_id
+      redirect_to root_path
+    elsif @item.order.present?
+      redirect_to root_path 
+    end
   end
 
   def create
@@ -34,7 +39,6 @@ class OrdersController < ApplicationController
     )
   end
 
-
   def move_to_index
     @item = Item.find(params[:item_id])
     unless @item.user_id != current_user.id
@@ -42,5 +46,5 @@ class OrdersController < ApplicationController
     end
   end
 
-
 end
+
