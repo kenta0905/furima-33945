@@ -3,7 +3,6 @@ class Form
   include ActiveModel::Model
   attr_accessor :item,:user_id,:item_id,:postal_code,:prefecture_id,:city,:address,:building,:phone_number,:order,:token
 
-  # ここにバリデーションの処理を書く
   with_options presence: true do
     validates :item_id
     validates :user_id
