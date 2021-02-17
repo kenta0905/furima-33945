@@ -67,10 +67,6 @@ it 'phone_numberの保存は11桁以内の数値でないと登録できない' 
   end
 
 
-
-
-
-
   it 'phone_numberの保存は文字が含まれていると登録できない' do
     @form.phone_number = '123abc'
     @form.valid?
@@ -86,30 +82,26 @@ it 'phone_numberの保存は11桁以内の数値でないと登録できない' 
   it 'prefecture_idの保存はidが1だと登録できない' do
     @form.prefecture_id = 1
     @form.valid?
-    expect(@form.errors.full_messages).to include("Prefecture must be other than 1")
+    expect(@form.errors.full_messages).to include("Prefecture Select")
   end
 
   it 'tokenが空では登録できない' do
-    @form.city = ''
+    @form.token = nil
     @form.valid?
     expect(@form.errors.full_messages).to include("Token can't be blank")
   end
 
   it 'user_idがないと登録できない' do
-    @form.city = ''
+    @form.user_id = nil
     @form.valid?
     expect(@form.errors.full_messages).to include("User can't be blank")
   end
 
   it 'item_idがないと登録できない' do
-    @form.city = ''
+    @form.item_id = nil
     @form.valid?
     expect(@form.errors.full_messages).to include("Item can't be blank")
   end
-
-
-
-
 
 
 end
