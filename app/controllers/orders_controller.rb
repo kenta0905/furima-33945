@@ -4,9 +4,6 @@ class OrdersController < ApplicationController
 
   def index
     @form = Form.new
-    if @item.order.present?
-      redirect_to root_path 
-    end
   end
 
   def create
@@ -37,7 +34,7 @@ class OrdersController < ApplicationController
 
   def move_to_index
     @item = Item.find(params[:item_id])
-    unless @item.user_id != current_user.id
+    if @item.user_id == current_user.id || @item.order.present?
       redirect_to root_path
     end
   end

@@ -16,6 +16,7 @@ describe '商品購入機能' do
    end
   
     it 'postal_code、prefecture_id、city、address、phone_number、item、user、token入力で登録' do
+      @form.building = ''
       expect(@form).to be_valid
     end
   end
