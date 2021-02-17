@@ -24,9 +24,6 @@ class ItemsController < ApplicationController
   end
   
   def edit
-    if current_user.id != @item.user_id || @item.order.present?
-      redirect_to root_path 
-    end
   end
 
   def update
@@ -52,7 +49,7 @@ class ItemsController < ApplicationController
 
 
   def move_to_index
-    unless current_user.id == @item.user_id
+    unless current_user.id == @item.user_id || @item.order.present?
      redirect_to action: :index
     end 
   end 
