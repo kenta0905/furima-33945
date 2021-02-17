@@ -28,5 +28,3 @@ class Form
   end
   
 end
-
-#@form.id

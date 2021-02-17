@@ -11,9 +11,13 @@ RSpec.describe Form, type: :model do
 
 describe '商品購入機能' do
   context '商品購入できるとき' do
-   it 'postal_code、prefecture_id、city、address、phone_number、item、user、token入力で登録' do
+   it 'postal_code、prefecture_id、city、address、building、phone_number、item、user、token入力で登録' do
      expect(@form).to be_valid
    end
+  
+    it 'postal_code、prefecture_id、city、address、phone_number、item、user、token入力で登録' do
+      expect(@form).to be_valid
+    end
   end
 
 
@@ -57,13 +61,57 @@ describe '商品購入機能' do
   end
 
 it 'phone_numberの保存は11桁以内の数値でないと登録できない' do
-    @form.phone_number = {maxlength: 11}
+    @form.phone_number = '012345678910'
     @form.valid?
     expect(@form.errors.full_messages).to include("Phone number Input only number")
   end
 
-end
-end
-end
 
 
+
+
+
+  it 'phone_numberの保存は文字が含まれていると登録できない' do
+    @form.phone_number = '123abc'
+    @form.valid?
+    expect(@form.errors.full_messages).to include("Phone number Input only number")
+  end
+
+  it 'phone_numberの保存はハイフンが入っていると登録できない' do
+    @form.phone_number = '012345-67891'
+    @form.valid?
+    expect(@form.errors.full_messages).to include("Phone number Input only number")
+  end
+
+  it 'prefecture_idの保存はidが1だと登録できない' do
+    @form.prefecture_id = 1
+    @form.valid?
+    expect(@form.errors.full_messages).to include("Prefecture must be other than 1")
+  end
+
+  it 'tokenが空では登録できない' do
+    @form.city = ''
+    @form.valid?
+    expect(@form.errors.full_messages).to include("Token can't be blank")
+  end
+
+  it 'user_idがないと登録できない' do
+    @form.city = ''
+    @form.valid?
+    expect(@form.errors.full_messages).to include("User can't be blank")
+  end
+
+  it 'item_idがないと登録できない' do
+    @form.city = ''
+    @form.valid?
+    expect(@form.errors.full_messages).to include("Item can't be blank")
+  end
+
+
+
+
+
+
+end
+end
+end

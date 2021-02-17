@@ -1,13 +1,10 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index
+  before_action :move_to_index, only: [:index] 
 
   def index
     @form = Form.new
-    @item = Item.find(params[:item_id])
-    if current_user.id == @item.user_id
-      redirect_to root_path
-    elsif @item.order.present?
+    if @item.order.present?
       redirect_to root_path 
     end
   end
