@@ -7,10 +7,6 @@ class Form
   with_options presence: true do
     validates :item_id
     validates :user_id
-  end
-
-
-  with_options presence: true do
     validates :postal_code, format: { with: /\A\d{3}[-]\d{4}\z/, message: 'Input correctly' }
     validates :city
     validates :address 

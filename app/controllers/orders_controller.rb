@@ -1,6 +1,6 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index, only: [:index] 
+  before_action :move_to_index, only: [:index, :create] 
 
   def index
     @form = Form.new
@@ -11,7 +11,6 @@ class OrdersController < ApplicationController
 
   def create
     @form = Form.new(order_params)
-    @item = Item.find(params[:item_id])
     if @form.valid?
       @form.save
       pay_item
